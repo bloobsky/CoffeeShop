@@ -4,11 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CoffeeShop"
+    xmlns:views="clr-namespace:CoffeeShop.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar x:Name="Tabs">
+        <Tab Title="Home" Icon="home.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+        <Tab Title="Menu" Icon="menu.svg">
+            <ShellContent ContentTemplate="{DataTemplate views:Menu}"/>
+        </Tab>
+        <Tab Title="Cart" Icon="cart.svg">
+            <ShellContent ContentTemplate="{DataTemplate views:Cart}"/>
+        </Tab>
+        <Tab Title="Orders" Icon="info.svg">
+            <ShellContent ContentTemplate="{DataTemplate views:Orders}"/>
+        </Tab>
+    </TabBar>
 
 </Shell>

@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-
+		<MauiIcon Include="Resources\AppIcon\appicon.png" />
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
@@ -73,10 +73,20 @@
 	  <Folder Include="Components\" />
 	  <Folder Include="Helpers\" />
 	  <Folder Include="Models\" />
-	  <Folder Include="Resources\AppIcon\" />
-	  <Folder Include="Views\" />
 	  <Folder Include="ViewModels\" />
 	  <Folder Include="Services\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Cart.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Menu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Orders.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
