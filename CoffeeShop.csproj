@@ -32,14 +32,12 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -49,8 +47,36 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\bagel.png" />
+	  <None Remove="Resources\Images\burger.png" />
+	  <None Remove="Resources\Images\cart.svg" />
+	  <None Remove="Resources\Images\chailatte.png" />
+	  <None Remove="Resources\Images\chicken.png" />
+	  <None Remove="Resources\Images\donut.png" />
+	  <None Remove="Resources\Images\espresso.png" />
+	  <None Remove="Resources\Images\home.svg" />
+	  <None Remove="Resources\Images\info.svg" />
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\macchiato.png" />
+	  <None Remove="Resources\Images\menu.svg" />
+	  <None Remove="Resources\Images\shake.png" />
+	  <None Remove="Resources\Images\tea.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Base\" />
+	  <Folder Include="Components\" />
+	  <Folder Include="Helpers\" />
+	  <Folder Include="Models\" />
+	  <Folder Include="Resources\AppIcon\" />
+	  <Folder Include="Views\" />
+	  <Folder Include="ViewModels\" />
+	  <Folder Include="Services\" />
 	</ItemGroup>
 
 </Project>
