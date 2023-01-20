@@ -9,8 +9,8 @@ public partial class ListViewProduct : ObservableObject
     [ObservableProperty]
     public int quantity;
 
-    public ListViewProduct(Item item)
+    public ListViewProduct(Item i)
     {
-        Item = item;
+        Item = i;
     }
 }

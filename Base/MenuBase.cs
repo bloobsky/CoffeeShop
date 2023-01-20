@@ -25,7 +25,7 @@ public partial class MenuBase : ObservableObject
 
 
     [RelayCommand]
-    void decrement(ListViewProduct i)
+    void Decrement(ListViewProduct i)
     {
         if(i.Quantity > 0)
         {
@@ -35,7 +35,7 @@ public partial class MenuBase : ObservableObject
     }
 
     [RelayCommand]
-    void increment(ListViewProduct i) 
+    void Increment(ListViewProduct i) 
     {
         i.Quantity += 1;
     }
