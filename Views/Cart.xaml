@@ -2,11 +2,43 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CoffeeShop.Views.Cart"
-             Title="Cart">
+             xmlns:models="clr-namespace:CoffeeShop.Models"
+             xmlns:viewModels="clr-namespace:CoffeeShop.ViewModels"
+             x:DataType="viewModels:CartViewModel"
+             Title="Shopping Cart">
+    <ContentPage.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="25" />
+        </Style>
+    </ContentPage.Resources>
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <ListView ItemsSource="{Binding ShoppingCartProducts}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:ShoppingCartProduct">
+                    <ViewCell>
+                        <Border Stroke="{StaticResource Gray100Brush}" StrokeThickness="2">
+                            <Grid Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                Grid.Column="0"
+                                HeightRequest="50"
+                                Source="{Binding Item.Image}" />
+                                <Label Grid.Column="1" Text="{Binding Item.Name}" />
+                                <Label Grid.Column="2" Text="{Binding Quantity, StringFormat='Quantity: {0}'}" />
+                                <Label Grid.Column="3" Text="{Binding PriceTotal, StringFormat='Total: {0:F2}'}" />
+                            </Grid>
+                        </Border>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label Text="{Binding ShoppingCartAll, StringFormat='Cart total: {0:F2}'}"></Label>
     </VerticalStackLayout>
 </ContentPage>
