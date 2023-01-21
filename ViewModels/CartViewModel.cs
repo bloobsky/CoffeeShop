@@ -1,7 +1,9 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Text.Json;
 using CoffeeShop.Models;
+using System.Windows.Input;
 
 namespace CoffeeShop.ViewModels;
 
@@ -23,5 +25,6 @@ public class CartViewModel : ObservableObject
     {
         OnPropertyChanged(nameof(ShoppingCartAll));
     }
+
 
 }

@@ -8,8 +8,8 @@
              Title="Shopping Cart">
     <ContentPage.Resources>
         <Style TargetType="{x:Type Label}">
-            <Setter Property="HorizontalTextAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="25" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="12" />
         </Style>
     </ContentPage.Resources>
     <VerticalStackLayout>
@@ -17,9 +17,16 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:ShoppingCartProduct">
                     <ViewCell>
-                        <Border Stroke="{StaticResource Gray100Brush}" StrokeThickness="2">
-                            <Grid Padding="5">
-                                <Grid.ColumnDefinitions>
+                        <Border Stroke="Black" StrokeThickness="2">
+                            <Grid Padding="3"
+                                  HeightRequest="1000"
+                                  ColumnSpacing="15"
+                                  RowSpacing="15">
+                            <Grid.RowDefinitions 
+                                Height="20">
+                                    
+                                    </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions Padding="50">
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                     <ColumnDefinition />
@@ -27,9 +34,9 @@
                                 </Grid.ColumnDefinitions>
                                 <Image
                                 Grid.Column="0"
-                                HeightRequest="50"
-                                Source="{Binding Item.Image}" />
-                                <Label Grid.Column="1" Text="{Binding Item.Name}" />
+                                Source="{Binding Item.Image}"
+                                HeightRequest="100"/>
+                                <Label Grid.Column="1" Text="{Binding Item.Name}" LineBreakMode="WordWrap" MaxLines="5"/>
                                 <Label Grid.Column="2" Text="{Binding Quantity, StringFormat='Quantity: {0}'}" />
                                 <Label Grid.Column="3" Text="{Binding PriceTotal, StringFormat='Total: {0:F2}'}" />
                             </Grid>
@@ -39,6 +46,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Label Text="{Binding ShoppingCartAll, StringFormat='Cart total: {0:F2}'}"></Label>
+        <Label Margin="10" Text="{Binding ShoppingCartAll, StringFormat='Cart total: {0:F2}'}" TextDecorations="Underline" FontSize="25" HorizontalTextAlignment="Center"></Label>
+        <Button Text="Checkout" HorizontalOptions="Center" Clicked="SaveToFile"/>
     </VerticalStackLayout>
 </ContentPage>

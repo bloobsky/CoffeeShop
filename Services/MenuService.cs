@@ -22,7 +22,7 @@ public class MenuService : IMenuService
         {
             Id = 2,
             Type = "Food",
-            Name = "Bagel with organic cheese",
+            Name = "Bagel with cheese",
             Description = "Hand crafted dough topped with organic french goat's cheese",
             Image = "bagel.png",
             Price = 10,
