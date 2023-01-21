@@ -24,14 +24,18 @@ public partial class Cart : ContentPage
     }
 	async void SaveToFile(object sender, EventArgs e)
 	{
-		JsonSerializer serializer = new JsonSerializer();
+        string DownloadsPath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, Android.OS.Environment.DirectoryDownloads);
+        string filePath = Path.Combine(DownloadsPath, "json.txt");
+        JsonSerializer serializer = new JsonSerializer();
 		serializer.Converters.Add(new JavaScriptDateTimeConverter());
-        using (StreamWriter sw = new StreamWriter(@"json.txt"))
+        using (StreamWriter sw = new StreamWriter(filePath))
         using (JsonWriter writer = new JsonTextWriter(sw))
         {
             serializer.Serialize(writer, _cartViewModel);
             // {"ExpiryDate":new Date(1230375600000),"Price":0}
         }
+
+
 
     }
 }
