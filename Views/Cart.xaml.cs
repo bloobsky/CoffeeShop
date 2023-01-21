@@ -3,6 +3,7 @@ using CoffeeShop.ViewModels;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
+using CoffeeShop.Helpers;
 
 namespace CoffeeShop.Views;
 
@@ -34,7 +35,7 @@ public partial class Cart : ContentPage
             serializer.Serialize(writer, _cartViewModel);
             // {"ExpiryDate":new Date(1230375600000),"Price":0}
         }
-
+        await ToastCheckout.ShowToast();
 
 
     }
