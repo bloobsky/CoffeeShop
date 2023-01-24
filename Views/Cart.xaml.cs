@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 using CoffeeShop.Helpers;
+using Android.Media.Audiofx;
 
 namespace CoffeeShop.Views;
 
@@ -26,6 +27,8 @@ public partial class Cart : ContentPage
 
 	async void SaveToFile(object sender, EventArgs e)
 	{
+        string customerName = await DisplayPromptAsync("Name", "Enter your name");
+        string phoneNumber = await DisplayPromptAsync("Phone Number", "Enter your phone number");
         // creating unique order based by date
         DateTime now = DateTime.Now;
         var fileName = "Order" + now.ToString("yyyyMMddHHmmss") + ".txt";
@@ -39,6 +42,8 @@ public partial class Cart : ContentPage
         using (JsonWriter writer = new JsonTextWriter(sw))
         {
             serializer.Serialize(writer, _cartViewModel);
+            serializer.Serialize(writer, customerName);
+            serializer.Serialize(writer, phoneNumber);
         }
         await ToastCheckout.ShowToast();
 
