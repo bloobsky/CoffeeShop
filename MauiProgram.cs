@@ -29,6 +29,7 @@ public static class MauiProgram
 
 		//Services
 		builder.Services.AddSingleton<IMenuService, MenuService>();
+		builder.Services.AddSingleton<IOrdersService, OrdersService>();
 
 		//Views
 		builder.Services.AddSingleton<Cart>();
@@ -39,10 +40,12 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<MenuViewModel>();
 		builder.Services.AddSingleton<CartViewModel>();
+		builder.Services.AddSingleton<OrdersViewModel>();
 
-
+		
 		//ShoppingCaERT
 		builder.Services.AddSingleton<ShoppingCart>();
+        builder.Services.AddSingleton<Order>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

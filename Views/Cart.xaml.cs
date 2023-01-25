@@ -1,10 +1,10 @@
 using CoffeeShop.ViewModels;
 //using System.Text.Json;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System.Text.Json;
 using System.Collections.Generic;
 using CoffeeShop.Helpers;
-using Android.Media.Audiofx;
+using CoffeeShop.Models;
+
 
 namespace CoffeeShop.Views;
 
@@ -34,19 +34,37 @@ public partial class Cart : ContentPage
         var fileName = "Order" + now.ToString("yyyyMMddHHmmss") + ".txt";
 
         //android settings
-        string DownloadsPath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, Android.OS.Environment.DirectoryDownloads); //saving to Downloads folder
-        string filePath = Path.Combine(DownloadsPath, fileName);
-        JsonSerializer serializer = new JsonSerializer();
-		serializer.Converters.Add(new JavaScriptDateTimeConverter());
-        using (StreamWriter sw = new StreamWriter(filePath))
-        using (JsonWriter writer = new JsonTextWriter(sw))
-        {
-            serializer.Serialize(writer, _cartViewModel);
-            serializer.Serialize(writer, customerName);
-            serializer.Serialize(writer, phoneNumber);
-        }
-        await ToastCheckout.ShowToast();
+       // string DownloadsPath = Path.Combine(); //saving to App folder
+        string filePath = Path.Combine(FileSystem.Current.AppDataDirectory, fileName);
 
+        DetailedOrder detailOrder = new DetailedOrder(customerName, phoneNumber, _cartViewModel.ShoppingCartProducts);
+
+        // JsonSerializer serializer = new JsonSerializer();
+
+        await using var stream = File.OpenWrite(filePath);
+        await using var sw = new StreamWriter(stream);
+        
+       var serialized = JsonSerializer.Serialize(detailOrder);
+            await sw.WriteAsync(serialized);
+
+        
+        await ToastCheckout.ShowToast(); //showing toast
+
+    }
+
+    public class DetailedOrder
+    {
+        public string CustomerName { get; set; }
+
+        public DetailedOrder(string customerName, string phoneNumber, IEnumerable<ShoppingCartProduct> newOrder)
+        {
+            CustomerName = customerName;
+            PhoneNumber = phoneNumber;
+            NewOrder = newOrder;
+        }
+
+        public string PhoneNumber { get; set; }
+        public IEnumerable<ShoppingCartProduct> NewOrder { get; set; }
 
     }
 }

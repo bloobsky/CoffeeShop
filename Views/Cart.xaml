@@ -19,7 +19,7 @@
                     <ViewCell>
                         <Border Stroke="Black" StrokeThickness="2">
                             <Grid Padding="3"
-                                  HeightRequest="1000"
+                                  HeightRequest="100"
                                   ColumnSpacing="15"
                                   RowSpacing="15">
                             <Grid.RowDefinitions 
