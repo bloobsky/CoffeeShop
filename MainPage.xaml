@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CoffeeShop.MainPage">
+             x:Class="CoffeeShop.MainPage"
+             Title="Eco Cafeteria - your source of healthy food">
 
     <ScrollView>
         <VerticalStackLayout
@@ -12,7 +13,8 @@
             <Image
                 Source="logo.png"
                 SemanticProperties.Description="Eco Cafteria"
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                HeightRequest="200"/>
 
             <Label
                 Text="Welcome to Eco Cafeteria"
