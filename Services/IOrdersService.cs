@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CoffeeShop.Models;
+using CoffeeShop.Views;
 
 namespace CoffeeShop.Services
 {
     public interface IOrdersService
     {
-        public IEnumerable<Order> Orders();
+        public IEnumerable<DetailedOrder> Orders();
     }
 }

@@ -4,6 +4,36 @@
              x:Class="CoffeeShop.Views.Orders"
              xmlns:viewModels="clr-namespace:CoffeeShop.ViewModels"
              x:DataType="viewModels:OrdersViewModel"
+             xmlns:views="clr-namespace:CoffeeShop.Views"
+             xmlns:models="clr-namespace:CoffeeShop.Models"
              Title="Orders">
-    <ListView ItemsSource="{Binding Orders}"/>
+    <StackLayout>
+    <ListView ItemsSource="{Binding Orders}">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="views:DetailedOrder">
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding CustomerName}" />
+                        <Label Text="{Binding PhoneNumber}"/>
+                        <ListView ItemsSource="{Binding NewOrder}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="models:ShoppingCartProduct">
+                                    <ViewCell>
+                                        <StackLayout>
+                                            <Label Text="{Binding Item.Name}" />
+                                            <Label Text="{Binding Quantity}" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    <Button Command="{Binding RefreshOrdersCommand}" Text="Refresh Orders"/>
+    </StackLayout>    
 </ContentPage>

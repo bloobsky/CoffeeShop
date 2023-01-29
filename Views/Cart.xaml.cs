@@ -4,29 +4,29 @@ using System.Text.Json;
 using System.Collections.Generic;
 using CoffeeShop.Helpers;
 using CoffeeShop.Models;
-
+using System.Diagnostics;
 
 namespace CoffeeShop.Views;
 
 public partial class Cart : ContentPage
 {
 
-	private CartViewModel _cartViewModel;
-	public Cart(CartViewModel cartViewModel)
-	{
-		InitializeComponent();
-		_cartViewModel = cartViewModel;
-		BindingContext= _cartViewModel;
-	}
+    private CartViewModel _cartViewModel;
+    public Cart(CartViewModel cartViewModel)
+    {
+        InitializeComponent();
+        _cartViewModel = cartViewModel;
+        BindingContext = _cartViewModel;
+    }
 
     protected override void OnAppearing()
     {
-		_cartViewModel.UpdateShoppingCart();
+        _cartViewModel.UpdateShoppingCart();
         base.OnAppearing();
     }
 
-	async void SaveToFile(object sender, EventArgs e)
-	{
+    async void SaveToFile(object sender, EventArgs e)
+    {
         string customerName = await DisplayPromptAsync("Name", "Enter your name");
         string phoneNumber = await DisplayPromptAsync("Phone Number", "Enter your phone number");
         // creating unique order based by date
@@ -34,23 +34,23 @@ public partial class Cart : ContentPage
         var fileName = "Order" + now.ToString("yyyyMMddHHmmss") + ".txt";
 
         //android settings
-       // string DownloadsPath = Path.Combine(); //saving to App folder
+        // string DownloadsPath = Path.Combine(); //saving to App folder
         string filePath = Path.Combine(FileSystem.Current.AppDataDirectory, fileName);
-
+        Debug.WriteLine(FileSystem.Current.AppDataDirectory);
         DetailedOrder detailOrder = new DetailedOrder(customerName, phoneNumber, _cartViewModel.ShoppingCartProducts);
 
         // JsonSerializer serializer = new JsonSerializer();
 
         await using var stream = File.OpenWrite(filePath);
         await using var sw = new StreamWriter(stream);
-        
-       var serialized = JsonSerializer.Serialize(detailOrder);
-            await sw.WriteAsync(serialized);
 
-        
+        var serialized = JsonSerializer.Serialize(detailOrder);
+        await sw.WriteAsync(serialized);
+
+
         await ToastCheckout.ShowToast(); //showing toast
 
-    }
+    } }
 
     public class DetailedOrder
     {
@@ -66,6 +66,12 @@ public partial class Cart : ContentPage
         public string PhoneNumber { get; set; }
         public IEnumerable<ShoppingCartProduct> NewOrder { get; set; }
 
+
+    public DetailedOrder()
+    {
+
     }
-}
+    }
+
+
 
