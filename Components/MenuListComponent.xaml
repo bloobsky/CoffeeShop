@@ -13,9 +13,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
 
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -31,6 +33,15 @@
                         FontSize="18"
                         HorizontalTextAlignment="Center"
                         Text="{Binding Item.Name}"
+                        VerticalTextAlignment="Center"
+                        Padding="25"/>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Item.Price, StringFormat='Price: {0}€' }"
                         VerticalTextAlignment="Center"
                         Padding="25"/>
 

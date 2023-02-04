@@ -38,7 +38,7 @@
                                 HeightRequest="100"/>
                                 <Label Grid.Column="1" Text="{Binding Item.Name}" LineBreakMode="WordWrap" MaxLines="5"/>
                                 <Label Grid.Column="2" Text="{Binding Quantity, StringFormat='Quantity: {0}'}" />
-                                <Label Grid.Column="3" Text="{Binding PriceTotal, StringFormat='Total: {0:F2}'}" />
+                                <Label Grid.Column="3" Text="{Binding PriceTotal, StringFormat='Total: €{0:F2}'}" />
                             </Grid>
                         </Border>
 
@@ -46,7 +46,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Label Margin="10" Text="{Binding ShoppingCartAll, StringFormat='Cart total: {0:F2}'}" TextDecorations="Underline" FontSize="25" HorizontalTextAlignment="Center"></Label>
+        <Label Margin="10" Text="{Binding ShoppingCartAll, StringFormat='Cart total: €{0:F2}'}" TextDecorations="Underline" FontSize="25" HorizontalTextAlignment="Center"></Label>
         <Button Text="Checkout" HorizontalOptions="Center" Clicked="SaveToFile"/>
     </VerticalStackLayout>
 </ContentPage>
