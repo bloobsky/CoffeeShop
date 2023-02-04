@@ -21,7 +21,7 @@
                                         <DataTemplate x:DataType="models:ShoppingCartProduct">
                                             <ViewCell>
                                                 <StackLayout>
-                                                    <Label Text="{Binding Item.Name, StringFormat='Item Ordered {0}:'}" />
+                                                    <Label Text="{Binding Item.Name, StringFormat='Item Ordered: {0}'}" />
                                                     <Label Text="{Binding Quantity, StringFormat='Quantity Ordered: {0}'}" />
                                                     <Label Text="{Binding PriceTotal, StringFormat='${0}'}" />
                                                 </StackLayout>

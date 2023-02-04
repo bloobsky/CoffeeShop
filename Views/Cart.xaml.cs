@@ -27,6 +27,7 @@ public partial class Cart : ContentPage
 
     async void SaveToFile(object sender, EventArgs e)
     {
+        
         string customerName = await DisplayPromptAsync("Name", "Enter your name");
         string phoneNumber = await DisplayPromptAsync("Phone Number", "Enter your phone number");
         // creating unique order based by date
@@ -49,7 +50,7 @@ public partial class Cart : ContentPage
 
 
         await ToastCheckout.ShowToast(); //showing toast
-
+        _cartViewModel.OrdersClear();
     } }
 
     public class DetailedOrder
@@ -71,7 +72,9 @@ public partial class Cart : ContentPage
     {
 
     }
-    }
 
+    
+    }
+    
 
 

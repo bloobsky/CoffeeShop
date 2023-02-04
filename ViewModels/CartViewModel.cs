@@ -26,5 +26,8 @@ public class CartViewModel : ObservableObject
         OnPropertyChanged(nameof(ShoppingCartAll));
     }
 
-
+    public void OrdersClear()
+    {
+        ShoppingCartProducts.Clear();
+    }
 }
